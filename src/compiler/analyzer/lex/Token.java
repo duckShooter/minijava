@@ -23,8 +23,8 @@ public class Token {
 			String[]line;
 			for(String str : stringList){
 				line = str.split(" ");
-				tokens.add(new Token(line[1], line[0]));
-			//	System.out.println(line[0]);
+				tokens.add(new Token(line[1], "<" + line[0] + ">"));
+			//	System.out.println(line[0] + " " + line[1]);
 			}
 			return tokens;
 		} catch (IOException e) {

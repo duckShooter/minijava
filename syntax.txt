@@ -1,4 +1,9 @@
-﻿thisisIT_43 _fjaklj "jfkldsjflkj klj lkj$^$#45'" ' '4' //this is ithe jdkl jf
-\* kdlsjf klasjdf 
-sdfj klsadjfkl; jdsflk jsadkfl jlksad;jf kl;sjf kdlf j*/
-\* jkldsjf kljsdkl fjlkasdj flkjd klj lkfj's''
+﻿/* this is a 
+multi
+line comment 
+*/
+//this is a single line /* jk*/
+"user 'f' " " ' "
+4identifier
+x + y { thisisIt } () [-] . ! " = " =
+* x < y > 
