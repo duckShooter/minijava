@@ -1,0 +1,9 @@
+﻿STRING_LITERAL ".*?" 
+COMMENT1 \/\/.* 
+COMMENT2 (?is)\/\*.*?\*\\ (multiline needed)
+ID [a-zA-Z_][a-zA-Z0-9_]* 
+A_CHAR '.'
+SQUOTE '
+DQUOTE "
+COMMENT_L /*\/\* 
+COMMENT_R /*/\*\/
