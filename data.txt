@@ -24,3 +24,11 @@ MINUS -
 MULTIPLY \*
 LESSTHAN <
 GREATERTHAN >
+STRING (?<![!@#$%^&*+'"~.:`-])\b(?<STRING>string)\b(?![!@#$%^&*+'"~.:`-])
+FLOAT (?<![!@#$%^&*+'"~.:`-])\b(?<FLOAT>float)\b(?![!@#$%^&*+'"~.:`-])
+CHARACTER (?<![!@#$%^&*+'"~.:`-])\b(?<CHARACTER>char)\b(?![!@#$%^&*+'"~.:`-])
+BOOLEAN (?<![!@#$%^&*+'"~.:`-])\b(?<BOOLEAN>boolean)\b(?![!@#$%^&*+'"~.:`-])
+EXTENDS \b(?<EXTENDS>extends)\b
+SYSTEM.OUT.PRINTLN \bsystem\.out\.println\b
+INTEGRAL_LITERAL [-+]?(?<!\.)\b\d+\b(?!\.)
+FLOAT_LITERAL [-+]?\b\d+\.\d*\b
