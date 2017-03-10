@@ -1,0 +1,9 @@
+GREATERTHAN \\b\\s*>\\s*\\b
+IF \\bif\\b
+INT \\bint\\b
+ELSE \\belse\\b
+MAIN \\bmain\\b
+THIS \\bthis\\b
+TRUE \\btrue\\b
+VOID \\bvoid\\b
+CLASS \\bclass\\b
