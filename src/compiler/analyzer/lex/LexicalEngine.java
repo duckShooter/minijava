@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -32,7 +33,7 @@ public class LexicalEngine {
 	 * Reads a line of input and scan it to extract lexemes
 	 */
 	public static void scan() {
-		tokens = Token.loadTokens("tokens.txt");
+		tokens = Token.loadTokens("togex.txt");
 		leximes = new ArrayList<>();
 		
 		//the string of all tokens
@@ -41,29 +42,51 @@ public class LexicalEngine {
 			leximesStr.append(temp.regex + "|");
 		
 		leximesStr.deleteCharAt(leximesStr.length() - 1);//removing the last '|'
-	    System.out.println("865: " +  leximesStr.substring(865));
+	   // System.out.println("865: " +  leximesStr.substring(865));
 	//	System.out.println(leximesStr.toString());
 		//outer loop
-	    System.out.println(readSyntax());
+	//    System.out.println(readSyntax());
+		String syntax = readSyntax();
 		Pattern pat = Pattern.compile(leximesStr.toString());
-		Matcher matcher = pat.matcher(readSyntax());
+		Matcher matcher = pat.matcher(syntax);
 		
 		//inner loop
 		Pattern tempPat;
 		Matcher tempMatcher;
-		
+		int last = -1;
 		while(matcher.find()){
 		//	System.out.println(matcher.group());
+			if(last != -1 && last < matcher.start()){
+				for(int i = last;i < matcher.start();i++)
+					if(syntax.charAt(i) != ' '){
+						//System.out.println("<ERROR> " + syntax.substring(last, matcher.start()));
+						leximes.add(new Lexime(syntax.substring(last, matcher.start()), "ERROR"));
+						break;
+					}
+			} else if(last == -1 && matcher.start() > 1){
+				for(int i = 0;i < matcher.start();i++)
+					if(syntax.charAt(i) != ' '){
+						//System.out.println("<ERRO R> " + syntax.substring(0, matcher.start()));
+						leximes.add(new Lexime(syntax.substring(0, matcher.start()), "ERROR"));
+						break;
+					}
+			}
+			last = matcher.end();
 			for(Token tempToken : tokens){
 				//System.out.println(tempToken.regex + " " + matcher.group());
 				tempPat = Pattern.compile(tempToken.regex);
 				tempMatcher = Pattern.compile(tempToken.regex).matcher(matcher.group());
 				if(tempMatcher.find() && tempMatcher.start() == 0) {
-						leximes.add(new Lexime(matcher.group(), tempToken.type));
+						leximes.add(new Lexime(tempToken.type.equals("EOL") ? "" : matcher.group(), tempToken.type));
 						break;
 					}
 			}
 		}
+		for(int i = last;i < syntax.length();i++)
+			if(syntax.charAt(i) != ' '){
+				leximes.add(new Lexime(syntax.substring(i, syntax.length()), "ERROR"));
+				break;
+			}	
 	}
 	
 	private static String readSyntax() {
@@ -96,6 +119,8 @@ public class LexicalEngine {
 			root.appendChild(tokens);
 			xmlResult.appendChild(root);
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 			transformer.transform(new DOMSource(xmlResult), new StreamResult("result.xml"));
 		
 		} catch (ParserConfigurationException | TransformerFactoryConfigurationError

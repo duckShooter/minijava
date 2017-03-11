@@ -4,6 +4,6 @@ line comment
 */
 //this is a single line /* jk*/
 "user 'f' " " ' "
-4identifier
+4identifier ~ ~ ~ ~  ~
 x + y { thisisIt } () [-] . ! " = " =
-* x < y > 
+* x < y > ~

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<source>
+  <tokens>
+    <token type="﻿COMMENT2">/* this is a &#13;
+multi&#13;
+line comment &#13;
+*/</token>
+    <token type="EOL"/>
+    <token type="COMMENT1">//this is a single line /* jk*/&#13;</token>
+    <token type="EOL"/>
+    <token type="STRING_LITERAL">"user 'f' "</token>
+    <token type="STRING_LITERAL">" ' "</token>
+    <token type="EOL"/>
+    <token type="ERROR">4identifier ~ ~ ~ ~  ~</token>
+    <token type="EOL"/>
+    <token type="ID">x</token>
+    <token type="PLUS">+</token>
+    <token type="ID">y</token>
+    <token type="LEFT_CURLY_B">{</token>
+    <token type="ID">thisisIt</token>
+    <token type="RIGHT_CURLY_B">}</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="LEFT_SQUARE_B">[</token>
+    <token type="ERROR">-</token>
+    <token type="RIGHT_SQUARE_B">]</token>
+    <token type="DOT">.</token>
+    <token type="NOT">!</token>
+    <token type="STRING_LITERAL">" = "</token>
+    <token type="EQUAL">=</token>
+    <token type="EOL"/>
+    <token type="MULTIPLY">*</token>
+    <token type="ID">x</token>
+    <token type="LESSTHAN">&lt;</token>
+    <token type="ID">y</token>
+    <token type="GREATERTHAN">&gt;</token>
+    <token type="ERROR">~</token>
+  </tokens>
+</source>
