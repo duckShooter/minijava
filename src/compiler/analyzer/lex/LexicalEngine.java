@@ -5,34 +5,46 @@ import java.util.regex.Pattern;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 //NOTE: this structure is eligible to change later
 
 public class LexicalEngine {
-	private static StringBuilder leximesStr;
-	private static ArrayList<Token> tokens;
-	private static ArrayList<Lexime> leximes;
+	private static StringBuilder leximesStr; //One line of code
+	private static ArrayList<Token> tokens; //List of recognizable tokens
+	private static ArrayList<Lexime> leximes; //List of lexical units
 
 	/**
 	 * Reads a line of input and scan it to extract lexemes
 	 */
 	public static void scan() {
-		tokens = Token.readFile("data.txt");
+		tokens = Token.loadTokens("tokens.txt");
 		leximes = new ArrayList<>();
 		
 		//the string of all tokens
-		leximesStr = new StringBuilder();
-		
+		leximesStr = new StringBuilder(); //StringBuilder for flexible string manipulation
 		for(Token temp : tokens)
 			leximesStr.append(temp.regex + "|");
+		
 		leximesStr.deleteCharAt(leximesStr.length() - 1);//removing the last '|'
-	    
+	    System.out.println("865: " +  leximesStr.substring(865));
 	//	System.out.println(leximesStr.toString());
 		//outer loop
+	    System.out.println(readSyntax());
 		Pattern pat = Pattern.compile(leximesStr.toString());
 		Matcher matcher = pat.matcher(readSyntax());
 		
@@ -54,30 +66,47 @@ public class LexicalEngine {
 		}
 	}
 	
-	private static String readSyntax(){
-		File file = new File("syntax.txt");
-		
+	private static String readSyntax() {
+		File file = new File("main.mj");
 		try {
-			FileInputStream fis = new FileInputStream(file);
+			
+			/*FileInputStream fis = new FileInputStream(file);
 			byte[] data = new byte[(int) file.length()];
 			fis.read(data);
-			fis.close();
-			return new String(data, "UTF-8");
+			fis.close(); */
+			return new String(Files.readAllBytes(Paths.get("main.mj")), "UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 
 	private static void WriteTokens() {
-		//just for testing purpose
-		for(Lexime lex : leximes)
-			System.out.println(lex.type + " " + lex.value);
+		try {
+			Document xmlResult = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+			Element root = xmlResult.createElement("source");
+			Element tokens = xmlResult.createElement("tokens");
+			for(Lexime unit : leximes) {
+				System.out.format("<%s> : %s\n", unit.type, unit.value);
+				Element token = xmlResult.createElement("token");
+				token.setAttribute("type", unit.type);
+				token.setTextContent(unit.value);
+				tokens.appendChild(token);
+			}
+			root.appendChild(tokens);
+			xmlResult.appendChild(root);
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.transform(new DOMSource(xmlResult), new StreamResult("result.xml"));
+		
+		} catch (ParserConfigurationException | TransformerFactoryConfigurationError
+				| TransformerException e) {
+			e.printStackTrace();
+		}
+			//System.out.println(lex.type + " " + lex.value);
 	}
+	
 	public static void main(String[] args) {
 		scan();
 		WriteTokens();
 	}
-
 }
