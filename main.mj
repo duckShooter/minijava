@@ -1,14 +1,14 @@
 ﻿class andrew extends shit{
 	boolean x;
-	int y = 4; " '
-	char z = y + 43.3 - /;
-	void a = new void[8]; 'k' 
+	int y = 4; 
+	char z = y + 43.3 - /; 
+	void a = new void[8]; 
 	float period(string x){
 		//this is kidding;
 		/* hi
 				jklj */
 				return x[4*4&&4];
-			}
+			} '
 	string shit(){
 		return !s.gender < a.boy;
 	}

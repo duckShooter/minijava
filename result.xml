@@ -7,66 +7,145 @@
     <token type="ID">shit</token>
     <token type="LEFT_CURLY_B">{</token>
     <token type="EOL"/>
-    <token type="ERROR">	</token>
     <token type="BOOLEAN">boolean</token>
     <token type="ID">x</token>
     <token type="SEMICOLON">;</token>
     <token type="EOL"/>
-    <token type="ERROR">	</token>
     <token type="INT">int</token>
     <token type="ID">y</token>
     <token type="EQUAL">=</token>
     <token type="INTEGRAL_LITERAL">4</token>
     <token type="SEMICOLON">;</token>
-    <token type="DQUOTE">" '&#13;
-	char z = y + 43.3 - /;&#13;
-	void a = new void[8]; 'k' &#13;
-	float period(string x){&#13;
-		//this is kidding;&#13;
-		/* hi&#13;
-				jklj */&#13;
-				return x[4*4&amp;&amp;4];&#13;
-			}&#13;
-	string shit(){&#13;
-		return !s.gender &lt; a.boy;&#13;
-	}&#13;
-	&#13;
-	~jfkljk ~_ ~jkljkej ~kje ~kljekl j~kelj kl~jekl&#13;
-	public static int a(){&#13;
-		if ( a &gt; b == true)&#13;
-			return btngan.length;&#13;
-		else if (true != false)&#13;
-			system.out.println("hiW$!~"</token>
+    <token type="EOL"/>
+    <token type="CHARACTER">char</token>
+    <token type="ID">z</token>
+    <token type="EQUAL">=</token>
+    <token type="ID">y</token>
+    <token type="PLUS">+</token>
+    <token type="FLOAT_LITERAL">43.3</token>
+    <token type="MINUS">-</token>
+    <token type="ERROR">/</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="VOID">void</token>
+    <token type="ID">a</token>
+    <token type="EQUAL">=</token>
+    <token type="NEW">new</token>
+    <token type="VOID">void</token>
+    <token type="LEFT_SQUARE_B">[</token>
+    <token type="INTEGRAL_LITERAL">8</token>
+    <token type="RIGHT_SQUARE_B">]</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="FLOAT">float</token>
+    <token type="ID">period</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="STRING">string</token>
+    <token type="ID">x</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="LEFT_CURLY_B">{</token>
+    <token type="EOL"/>
+    <token type="COMMENT1">//this is kidding;&#13;</token>
+    <token type="EOL"/>
+    <token type="﻿COMMENT2">/* hi&#13;
+				jklj */</token>
+    <token type="EOL"/>
+    <token type="RETURN">return</token>
+    <token type="ID">x</token>
+    <token type="LEFT_SQUARE_B">[</token>
+    <token type="INTEGRAL_LITERAL">4</token>
+    <token type="MULTIPLY">*</token>
+    <token type="INTEGRAL_LITERAL">4</token>
+    <token type="AND">&amp;&amp;</token>
+    <token type="INTEGRAL_LITERAL">4</token>
+    <token type="RIGHT_SQUARE_B">]</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="RIGHT_CURLY_B">}</token>
+    <token type="SQUOTE">'</token>
+    <token type="EOL"/>
+    <token type="STRING">string</token>
+    <token type="ID">shit</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="LEFT_CURLY_B">{</token>
+    <token type="EOL"/>
+    <token type="RETURN">return</token>
+    <token type="NOT">!</token>
+    <token type="ID">s</token>
+    <token type="DOT">.</token>
+    <token type="ID">gender</token>
+    <token type="LESSTHAN">&lt;</token>
+    <token type="ID">a</token>
+    <token type="DOT">.</token>
+    <token type="ID">boy</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="RIGHT_CURLY_B">}</token>
+    <token type="EOL"/>
+    <token type="EOL"/>
+    <token type="ERROR">~jfkljk ~_ ~jkljkej ~kje ~kljekl j~kelj kl~jekl</token>
+    <token type="EOL"/>
+    <token type="PUBLIC">public</token>
+    <token type="STATIC">static</token>
+    <token type="INT">int</token>
+    <token type="ID">a</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="LEFT_CURLY_B">{</token>
+    <token type="EOL"/>
+    <token type="IF">if</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="ID">a</token>
+    <token type="GREATERTHAN">&gt;</token>
+    <token type="ID">b</token>
+    <token type="EQUAL">=</token>
+    <token type="EQUAL">=</token>
+    <token type="TRUE">true</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="EOL"/>
+    <token type="RETURN">return</token>
+    <token type="ID">btngan</token>
+    <token type="DOT">.</token>
+    <token type="LENGTH">length</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="ELSE">else</token>
+    <token type="IF">if</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="TRUE">true</token>
+    <token type="NOT">!</token>
+    <token type="EQUAL">=</token>
+    <token type="FALSE">false</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="EOL"/>
+    <token type="SYSTEM.OUT.PRINTLN">system.out.println</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="STRING_LITERAL">"hiW$!~"</token>
     <token type="RIGHT_ROUND_B">)</token>
     <token type="SEMICOLON">;</token>
     <token type="EOL"/>
-    <token type="ERROR">		</token>
     <token type="ELSE">else</token>
     <token type="IF">if</token>
     <token type="LEFT_ROUND_B">(</token>
     <token type="TRUE">true</token>
     <token type="RIGHT_ROUND_B">)</token>
     <token type="EOL"/>
-    <token type="ERROR">			</token>
     <token type="RETURN">return</token>
     <token type="THIS">this</token>
     <token type="SEMICOLON">;</token>
     <token type="EOL"/>
-    <token type="ERROR">		</token>
     <token type="ELSE">else</token>
     <token type="EOL"/>
-    <token type="ERROR">			</token>
     <token type="RETURN">return</token>
     <token type="FLOAT_LITERAL">43.43</token>
     <token type="SEMICOLON">;</token>
     <token type="EOL"/>
-    <token type="ERROR">	</token>
     <token type="RIGHT_CURLY_B">}</token>
     <token type="EOL"/>
     <token type="RIGHT_CURLY_B">}</token>
     <token type="EOL"/>
     <token type="EOL"/>
-    <token type="ERROR">	</token>
     <token type="MAIN">main</token>
     <token type="ID">andrew</token>
     <token type="SEMICOLON">;</token>
