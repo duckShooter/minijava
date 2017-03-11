@@ -60,14 +60,14 @@ public class LexicalEngine {
 				for(int i = last;i < matcher.start();i++)
 					if(syntax.charAt(i) != ' '){
 						//System.out.println("<ERROR> " + syntax.substring(last, matcher.start()));
-						leximes.add(new Lexime(syntax.substring(last, matcher.start()), "ERROR"));
+						leximes.add(new Lexime(syntax.substring(i, matcher.start()), "ERROR"));
 						break;
 					}
 			} else if(last == -1 && matcher.start() > 1){
 				for(int i = 0;i < matcher.start();i++)
 					if(syntax.charAt(i) != ' '){
 						//System.out.println("<ERRO R> " + syntax.substring(0, matcher.start()));
-						leximes.add(new Lexime(syntax.substring(0, matcher.start()), "ERROR"));
+						leximes.add(new Lexime(syntax.substring(i, matcher.start()), "ERROR"));
 						break;
 					}
 			}

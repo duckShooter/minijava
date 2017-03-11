@@ -1,9 +1,29 @@
-﻿/* this is a 
-multi
-line comment 
-*/
-//this is a single line /* jk*/
-"user 'f' " " ' "
-4identifier ~ ~ ~ ~  ~
-x + y { thisisIt } () [-] . ! " = " =
-* x < y > ~
+﻿class andrew extends shit{
+	boolean x;
+	int y = 4; " '
+	char z = y + 43.3 - /;
+	void a = new void[8]; 'k' 
+	float period(string x){
+		//this is kidding;
+		/* hi
+				jklj */
+				return x[4*4&&4];
+			}
+	string shit(){
+		return !s.gender < a.boy;
+	}
+	
+	~jfkljk ~_ ~jkljkej ~kje ~kljekl j~kelj kl~jekl
+	public static int a(){
+		if ( a > b == true)
+			return btngan.length;
+		else if (true != false)
+			system.out.println("hiW$!~");
+		else if(true)
+			return this;
+		else
+			return 43.43;
+	}
+}
+
+	main andrew;

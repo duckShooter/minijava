@@ -1,39 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <source>
   <tokens>
-    <token type="﻿COMMENT2">/* this is a &#13;
-multi&#13;
-line comment &#13;
-*/</token>
-    <token type="EOL"/>
-    <token type="COMMENT1">//this is a single line /* jk*/&#13;</token>
-    <token type="EOL"/>
-    <token type="STRING_LITERAL">"user 'f' "</token>
-    <token type="STRING_LITERAL">" ' "</token>
-    <token type="EOL"/>
-    <token type="ERROR">4identifier ~ ~ ~ ~  ~</token>
-    <token type="EOL"/>
-    <token type="ID">x</token>
-    <token type="PLUS">+</token>
-    <token type="ID">y</token>
+    <token type="CLASS">class</token>
+    <token type="ID">andrew</token>
+    <token type="EXTENDS">extends</token>
+    <token type="ID">shit</token>
     <token type="LEFT_CURLY_B">{</token>
-    <token type="ID">thisisIt</token>
-    <token type="RIGHT_CURLY_B">}</token>
-    <token type="LEFT_ROUND_B">(</token>
-    <token type="RIGHT_ROUND_B">)</token>
-    <token type="LEFT_SQUARE_B">[</token>
-    <token type="ERROR">-</token>
-    <token type="RIGHT_SQUARE_B">]</token>
-    <token type="DOT">.</token>
-    <token type="NOT">!</token>
-    <token type="STRING_LITERAL">" = "</token>
-    <token type="EQUAL">=</token>
     <token type="EOL"/>
-    <token type="MULTIPLY">*</token>
+    <token type="ERROR">	</token>
+    <token type="BOOLEAN">boolean</token>
     <token type="ID">x</token>
-    <token type="LESSTHAN">&lt;</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="ERROR">	</token>
+    <token type="INT">int</token>
     <token type="ID">y</token>
-    <token type="GREATERTHAN">&gt;</token>
-    <token type="ERROR">~</token>
+    <token type="EQUAL">=</token>
+    <token type="INTEGRAL_LITERAL">4</token>
+    <token type="SEMICOLON">;</token>
+    <token type="DQUOTE">" '&#13;
+	char z = y + 43.3 - /;&#13;
+	void a = new void[8]; 'k' &#13;
+	float period(string x){&#13;
+		//this is kidding;&#13;
+		/* hi&#13;
+				jklj */&#13;
+				return x[4*4&amp;&amp;4];&#13;
+			}&#13;
+	string shit(){&#13;
+		return !s.gender &lt; a.boy;&#13;
+	}&#13;
+	&#13;
+	~jfkljk ~_ ~jkljkej ~kje ~kljekl j~kelj kl~jekl&#13;
+	public static int a(){&#13;
+		if ( a &gt; b == true)&#13;
+			return btngan.length;&#13;
+		else if (true != false)&#13;
+			system.out.println("hiW$!~"</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="ERROR">		</token>
+    <token type="ELSE">else</token>
+    <token type="IF">if</token>
+    <token type="LEFT_ROUND_B">(</token>
+    <token type="TRUE">true</token>
+    <token type="RIGHT_ROUND_B">)</token>
+    <token type="EOL"/>
+    <token type="ERROR">			</token>
+    <token type="RETURN">return</token>
+    <token type="THIS">this</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="ERROR">		</token>
+    <token type="ELSE">else</token>
+    <token type="EOL"/>
+    <token type="ERROR">			</token>
+    <token type="RETURN">return</token>
+    <token type="FLOAT_LITERAL">43.43</token>
+    <token type="SEMICOLON">;</token>
+    <token type="EOL"/>
+    <token type="ERROR">	</token>
+    <token type="RIGHT_CURLY_B">}</token>
+    <token type="EOL"/>
+    <token type="RIGHT_CURLY_B">}</token>
+    <token type="EOL"/>
+    <token type="EOL"/>
+    <token type="ERROR">	</token>
+    <token type="MAIN">main</token>
+    <token type="ID">andrew</token>
+    <token type="SEMICOLON">;</token>
   </tokens>
 </source>
