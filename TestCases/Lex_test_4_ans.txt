@@ -1,0 +1,6 @@
+ERROR this token did not match any RE '3var' @ index 0
+ERROR this token did not match any RE '4var1' @ index 10
+< EQUAL > : -=-
+< INTEGER_LITERAL > : -5-
+< SEMICOLON > : -;-
+< SEMICOLON > : -;-

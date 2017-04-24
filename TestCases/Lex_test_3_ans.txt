@@ -1,0 +1,35 @@
+ERROR this token did not match any RE '3CC1' @ index 70
+< CLASS > : -class-
+< ID > : -myclass-
+< LEFT_CURLY_B > : -{-
+< COMMENT2 > : -/* my ultimate comment */-
+< EOL > : -
+
+-
+< INT > : -int-
+< ID > : -var-
+< RIGHT_ROUND_B > : -)-
+< RIGHT_ROUND_B > : -)-
+< ID > : -XX1-
+< EQUAL > : -=-
+< INTEGER_LITERAL > : -0-
+< SEMICOLON > : -;-
+< COMMENT_R > : -*/-
+< INT > : -int-
+< RIGHT_ROUND_B > : -)-
+< EQUAL > : -=-
+< INTEGER_LITERAL > : -0-
+< SEMICOLON > : -;-
+< COMMENT_R > : -*/-
+< INTEGER_LITERAL > : -10-
+< PLUS > : -+-
+< INTEGER_LITERAL > : -5-
+< SEMICOLON > : -;-
+< EOL > : -
+
+-
+< RIGHT_CURLY_B > : -}-
+< SEMICOLON > : -;-
+< EOL > : -
+
+-

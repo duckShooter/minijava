@@ -1,0 +1,157 @@
+< COMMENT1 > : -// All of the MiniJava tokens, one per line.-
+< LEFT_CURLY_B > : -{-
+< EOL > : -
+
+-
+< RIGHT_CURLY_B > : -}-
+< EOL > : -
+
+-
+< LEFT_SQUARE_B > : -[-
+< EOL > : -
+
+-
+< RIGHT_SQUARE_B > : -]-
+< EOL > : -
+
+-
+< LEFT_ROUND_B > : -(-
+< EOL > : -
+
+-
+< RIGHT_ROUND_B > : -)-
+< EOL > : -
+
+-
+< COMMA > : -,-
+< EOL > : -
+
+-
+< SEMICOLON > : -;-
+< EOL > : -
+
+-
+< Dot > : -.-
+< EOL > : -
+
+-
+< NOT > : -!-
+< EOL > : -
+
+-
+< EQUAL > : -=-
+< EOL > : -
+
+-
+< AND > : -&&-
+< EOL > : -
+
+-
+< PLUS > : -+-
+< EOL > : -
+
+-
+< MINUS > : ---
+< EOL > : -
+
+-
+< MULTIPLIY > : -*-
+< EOL > : -
+
+-
+< LESSTHAN > : -<-
+< EOL > : -
+
+-
+< IF > : -if-
+< EOL > : -
+
+-
+< INT > : -int-
+< EOL > : -
+
+-
+< NEW > : -new-
+< EOL > : -
+
+-
+< ELSE > : -else-
+< EOL > : -
+
+-
+< MAIN > : -main-
+< EOL > : -
+
+-
+< THIS > : -this-
+< EOL > : -
+
+-
+< TRUE > : -true-
+< EOL > : -
+
+-
+< VOID > : -void-
+< EOL > : -
+
+-
+< CLASS > : -class-
+< EOL > : -
+
+-
+< FALSE > : -false-
+< EOL > : -
+
+-
+< WHILE > : -while-
+< EOL > : -
+
+-
+< LENGTH > : -length-
+< EOL > : -
+
+-
+< PUBLIC > : -public-
+< EOL > : -
+
+-
+< RETURN > : -return-
+< EOL > : -
+
+-
+< STATIC > : -static-
+< EOL > : -
+
+-
+< STRING > : -String-
+< EOL > : -
+
+-
+< BOOLEAN > : -boolean-
+< EOL > : -
+
+-
+< EXTENDS > : -extends-
+< EOL > : -
+
+-
+< SOP > : -System.out.println-
+< EOL > : -
+
+-
+< ID > : -Identifier-
+< EOL > : -
+
+-
+< INTEGER_LITERAL > : -123456789-
+< EOL > : -
+
+-
+< STRING_LITERAL > : -"String hohoho"-
+< EOL > : -
+
+-
+< A_CHAR > : -'c'-
+< EOL > : -
+
+-

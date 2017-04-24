@@ -1,6 +1,6 @@
-﻿class myclass{
+class myclass{
 /* my ultimate comment */
 int var)) XX1 = 0; */
 int 3CC1) = 0; */
-10+(-5);
+10+5;
 };

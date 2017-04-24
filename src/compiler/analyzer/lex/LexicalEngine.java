@@ -4,7 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -105,6 +108,20 @@ public class LexicalEngine {
 	}
 
 	private static void WriteTokens() {
+		//this is added by andrew till the next *//*
+		StringBuilder builder = new StringBuilder("");
+		for(Lexime unit : leximes)
+			builder.append("<" + unit.type + ">: " + unit.value + "\r\n");
+	
+		try {
+			PrintWriter writer = new PrintWriter("tokens.txt");
+			writer.print(builder.toString());
+			writer.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+			
 		try {
 			Document xmlResult = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 			Element root = xmlResult.createElement("source");

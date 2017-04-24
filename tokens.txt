@@ -1,0 +1,34 @@
+<CLASS>: class
+<ID>: myclass
+<LEFT_CURLY_B>: {
+<EOL>: 
+<?COMMENT2>: /* my ultimate comment */
+<EOL>: 
+<INT>: int
+<ID>: var
+<RIGHT_ROUND_B>: )
+<RIGHT_ROUND_B>: )
+<ID>: XX1
+<EQUAL>: =
+<INTEGRAL_LITERAL>: 0
+<SEMICOLON>: ;
+<COMMENT_R>: */
+<EOL>: 
+<INT>: int
+<ERROR>: 3CC1
+<RIGHT_ROUND_B>: )
+<EQUAL>: =
+<INTEGRAL_LITERAL>: 0
+<SEMICOLON>: ;
+<COMMENT_R>: */
+<EOL>: 
+<INTEGRAL_LITERAL>: 10
+<PLUS>: +
+<LEFT_ROUND_B>: (
+<MINUS>: -
+<INTEGRAL_LITERAL>: 5
+<RIGHT_ROUND_B>: )
+<SEMICOLON>: ;
+<EOL>: 
+<RIGHT_CURLY_B>: }
+<SEMICOLON>: ;

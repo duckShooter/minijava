@@ -26,7 +26,7 @@ GREATERTHAN > go
 WHILE \bwhile\b
 LENGTH \blength\b
 NEW \bnew\b
-STRING (?<![!@#$%^&*+'"~.:`-])\b(?<STRING>string)\b(?![!@#$%^&*+'"~.:`-])
+STRING (?<![!@#$%^&*+'"~.:`-])\b(?<STRING>String)\b(?![!@#$%^&*+'"~.:`-])
 FLOAT (?<![!@#$%^&*+'"~.:`-])\b(?<FLOAT>float)\b(?![!@#$%^&*+'"~.:`-])
 CHARACTER (?<![!@#$%^&*+'"~.:`-])\b(char)\b(?![!@#$%^&*+'"~.:`-])
 BOOLEAN (?<![!@#$%^&*+'"~.:`-])\b(boolean)\b(?![!@#$%^&*+'"~.:`-])
@@ -35,7 +35,7 @@ RETURN \b(return)\b
 STATIC \b(static)\b
 PUBLIC \b(public)\b
 FALSE \b(false)\b
-SYSTEM.OUT.PRINTLN (?<![a-zA-Z0-9'"~!@#$%^&\.])system\.out\.println\b
+SYSTEM.OUT.PRINTLN (?<![a-zA-Z0-9'"~!@#$%^&\.])System\.out\.println\b
 INTEGRAL_LITERAL [-+]?(?<![\.!~@$])\b\d+\b(?![\.'"!@#$~])
 FLOAT_LITERAL (?<![\.'"!@#$~a-zA-Z])[-+]?\d+\.\d+\b(?![\.'"!@#$~])
 GREATERTHAN (?<![!@#$%^&*+'"~.:`-])\\b\s*>\s*\\b(?![\[\]!@#$%^&*+'"~.:`-])
