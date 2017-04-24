@@ -1,31 +1,41 @@
 package compiler.analyzer.syn.classes;
 
 import java.util.ArrayList;
+
+import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.analyzer.syn.MutableInt;
 import compiler.analyzer.syn.SyntaxEngine;
+import compiler.analyzer.syn.visitor.CodePart;
+import compiler.analyzer.syn.visitor.Visitor;
 
-public class VarDeclaration {
+public class VarDeclaration implements CodePart {
 	public Type type;
 	public Identifier identifier;
 	
-	public VarDeclaration(ArrayList<Token> tokens, MutableInt tokensIndex) {
-		if(tokens.get(tokensIndex.getValue()).regex.equals("int"))
-			type = new TypeInt(tokens, tokensIndex);
-		else if(tokens.get(tokensIndex.getValue()).regex.equals("boolean"))
-			type = new TypeBoolean(tokens, tokensIndex);
-		else if(tokens.get(tokensIndex.getValue()).regex.equals("char"))
-			type = new TypeChar(tokens, tokensIndex);
-		else if(tokens.get(tokensIndex.getValue()).regex.equals("String"))
-			type = new TypeString(tokens, tokensIndex);
-		else if(tokens.get(tokensIndex.getValue()).regex.equals("float"))
-			type = new TypeFloat(tokens, tokensIndex);
+	public VarDeclaration(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+		if(leximes.get(leximesIndex.getValue()).value.equals("int"))
+			type = new TypeInt(leximes, leximesIndex);
+		else if(leximes.get(leximesIndex.getValue()).value.equals("boolean"))
+			type = new TypeBoolean(leximes, leximesIndex);
+		else if(leximes.get(leximesIndex.getValue()).value.equals("char"))
+			type = new TypeChar(leximes, leximesIndex);
+		else if(leximes.get(leximesIndex.getValue()).value.equals("String"))
+			type = new TypeString(leximes, leximesIndex);
+		else if(leximes.get(leximesIndex.getValue()).value.equals("float"))
+			type = new TypeFloat(leximes, leximesIndex);
 		else
-			SyntaxEngine.error(tokensIndex);
+			SyntaxEngine.error(leximesIndex);
+		leximesIndex.increment();
  
-		identifier = new Identifier(tokens, tokensIndex);
+		identifier = new Identifier(leximes, leximesIndex);
 		
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals(";"))
-			SyntaxEngine.error(tokensIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals(";"))
+			SyntaxEngine.error(leximesIndex);
+	}
+
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

@@ -1,52 +1,61 @@
 package compiler.analyzer.syn.classes;
 
 import java.util.ArrayList;
+
+import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.analyzer.syn.MutableInt;
 import compiler.analyzer.syn.SyntaxEngine;
+import compiler.analyzer.syn.visitor.CodePart;
+import compiler.analyzer.syn.visitor.Visitor;
 
-public class MainClass {
+public class MainClass implements CodePart {
 	public Identifier className;
 	public Identifier arg;
 	public Statement statement;
 	
-	public MainClass(ArrayList<Token> tokens, MutableInt tokensIndex) {
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("class"))
-			SyntaxEngine.error(tokensIndex);
+	public MainClass(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("class"))
+			SyntaxEngine.error(leximesIndex);
 		
-		className = new Identifier(tokens, tokensIndex);
+		className = new Identifier(leximes, leximesIndex);
 		
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("{"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("public"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("static"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("void"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("main"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("("))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("String"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("["))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("]"))
-			SyntaxEngine.error(tokensIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("{"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("public"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("static"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("void"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("main"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("("))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("String"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("["))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("]"))
+			SyntaxEngine.error(leximesIndex);
 		
-		arg = new Identifier(tokens, tokensIndex);
+		arg = new Identifier(leximes, leximesIndex);
 		
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals(")"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("{"))
-			SyntaxEngine.error(tokensIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals(")"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("{"))
+			SyntaxEngine.error(leximesIndex);
 		
 		statement = new Statement() // this is just interface, need to implement the children
 		
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("}"))
-			SyntaxEngine.error(tokensIndex);
-		if(!tokens.get(tokensIndex.getAndIncrement()).regex.equals("}"))
-			SyntaxEngine.error(tokensIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("}"))
+			SyntaxEngine.error(leximesIndex);
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("}"))
+			SyntaxEngine.error(leximesIndex);
+	}
+
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }
