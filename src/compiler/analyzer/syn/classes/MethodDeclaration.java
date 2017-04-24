@@ -31,7 +31,7 @@ public class MethodDeclaration implements CodePart {
 			SyntaxEngine.error(leximesIndex);
 		leximesIndex.increment();
 		
-		//type
+		methodType = Type.getType(leximes, leximesIndex);
 		
 		methodName = new Identifier(leximes, leximesIndex);
 		
@@ -40,16 +40,14 @@ public class MethodDeclaration implements CodePart {
 		
 		methodArgs = new ArrayList<>();
 		if(!leximes.get(leximesIndex.getValue()).value.equals(")")){
-			Type type;
-			//type
+			Type type = Type.getType(leximes, leximesIndex);
 			methodArgs.add(new Pair<Type, Identifier>(type, new Identifier(leximes, leximesIndex)));
 			
 			while(!leximes.get(leximesIndex.getValue()).value.equals(")")){
 				if(!leximes.get(leximesIndex.getAndIncrement()).value.equals(","))
 					SyntaxEngine.error(leximesIndex);
 				
-				type;
-				//type
+				type = Type.getType(leximes, leximesIndex);
 				methodArgs.add(new Pair<Type, Identifier>(type, new Identifier(leximes, leximesIndex)));
 			}
 		}

@@ -12,4 +12,5 @@ public interface Visitor {
 	public void visit(Statement statement);
 	public void visit(Type type);
 	public void visit(VarDeclaration varDeclaration);
+	public void visit(Expression expression);
 }

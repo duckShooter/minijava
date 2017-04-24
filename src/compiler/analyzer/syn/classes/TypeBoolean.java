@@ -10,6 +10,7 @@ public class TypeBoolean extends Type {
 	public Bracket bracket;
 	
 	public TypeBoolean(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+		leximesIndex.increment();
 		bracket = new Bracket(leximes, leximesIndex);
 	}
 

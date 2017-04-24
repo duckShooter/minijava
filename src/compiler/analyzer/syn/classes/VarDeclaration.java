@@ -14,7 +14,7 @@ public class VarDeclaration implements CodePart {
 	public Identifier identifier;
 	
 	public VarDeclaration(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
-		if(leximes.get(leximesIndex.getValue()).value.equals("int"))
+		/*if(leximes.get(leximesIndex.getValue()).value.equals("int"))
 			type = new TypeInt(leximes, leximesIndex);
 		else if(leximes.get(leximesIndex.getValue()).value.equals("boolean"))
 			type = new TypeBoolean(leximes, leximesIndex);
@@ -25,8 +25,8 @@ public class VarDeclaration implements CodePart {
 		else if(leximes.get(leximesIndex.getValue()).value.equals("float"))
 			type = new TypeFloat(leximes, leximesIndex);
 		else
-			SyntaxEngine.error(leximesIndex);
-		leximesIndex.increment();
+			SyntaxEngine.error(leximesIndex);*/
+		type = Type.getType(leximes, leximesIndex);
  
 		identifier = new Identifier(leximes, leximesIndex);
 		

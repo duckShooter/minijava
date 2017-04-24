@@ -10,6 +10,7 @@ public class TypeFloat extends Type {
 	public Bracket bracket;
 	
 	public TypeFloat(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+		leximesIndex.increment();
 		bracket = new Bracket(leximes, leximesIndex);
 	}
 

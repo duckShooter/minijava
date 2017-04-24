@@ -10,6 +10,7 @@ public class TypeChar extends Type {
 	public Bracket bracket;
 	
 	public TypeChar(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+		leximesIndex.increment();
 		bracket = new Bracket(leximes, leximesIndex);
 	}
 

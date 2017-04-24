@@ -2,6 +2,7 @@ package compiler.analyzer.syn.visitor;
 
 import compiler.analyzer.syn.classes.Bracket;
 import compiler.analyzer.syn.classes.ClassDeclaration;
+import compiler.analyzer.syn.classes.Expression;
 import compiler.analyzer.syn.classes.Goal;
 import compiler.analyzer.syn.classes.Identifier;
 import compiler.analyzer.syn.classes.MainClass;
@@ -65,6 +66,12 @@ public class WriterVisitor implements Visitor {
 	public void visit(VarDeclaration varDeclaration) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void visit(Expression expression) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

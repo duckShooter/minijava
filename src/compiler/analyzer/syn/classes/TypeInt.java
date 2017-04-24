@@ -10,6 +10,7 @@ public class TypeInt extends Type {
 	public Bracket bracket;
 	
 	public TypeInt(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+		leximesIndex.increment();
 		bracket = new Bracket(leximes, leximesIndex);
 	}
 }

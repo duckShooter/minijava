@@ -31,7 +31,7 @@ public class ClassDeclaration implements CodePart {
 			
 		varDeclarations = new ArrayList<>();
 		while(!leximes.get(leximesIndex.getValue()).value.equals("public") && !leximes.get(leximesIndex.getValue()).equals("private") && 
-				leximes.get(leximesIndex.getValue()).value.equals("}"))
+				!leximes.get(leximesIndex.getValue()).value.equals("}"))
 			varDeclarations.add(new VarDeclaration(leximes, leximesIndex));
 		
 		methodDeclarations = new ArrayList<>();
