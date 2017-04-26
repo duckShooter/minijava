@@ -6,10 +6,10 @@ import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
 import compiler.parser.syn.SyntaxEngine;
-import compiler.parser.syn.visitor.CodePart;
+import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public class VarDeclaration implements CodePart {
+public class VarDeclaration implements SyntaxRule {
 	public Type type;
 	public Identifier identifier;
 	

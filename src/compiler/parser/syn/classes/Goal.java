@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
-import compiler.parser.syn.visitor.CodePart;
+import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public class Goal implements CodePart {
+public class Goal implements SyntaxRule {
 	private MutableInt leximesIndex;
 	public MainClass mainClass;
 	public ArrayList<ClassDeclaration> classDeclarations;

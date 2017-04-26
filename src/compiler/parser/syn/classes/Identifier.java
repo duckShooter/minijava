@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
-import compiler.parser.syn.visitor.CodePart;
+import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public class Identifier implements CodePart {
+public class Identifier implements SyntaxRule {
 	public String identifier;
 	public Identifier(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
 		identifier = leximes.get(leximesIndex.getAndIncrement()).value;

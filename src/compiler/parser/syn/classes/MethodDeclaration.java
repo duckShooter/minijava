@@ -6,12 +6,12 @@ import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
 import compiler.parser.syn.SyntaxEngine;
-import compiler.parser.syn.visitor.CodePart;
+import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 import javafx.util.Pair;
 
-public class MethodDeclaration implements CodePart {
-	private enum Visibility{
+public class MethodDeclaration implements SyntaxRule {
+	private enum Visibility {
 		PUBLIC, PRIVATE
 	}
 	public Type methodType;

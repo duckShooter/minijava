@@ -1,9 +1,9 @@
 package compiler.parser.syn.classes;
 
-import compiler.parser.syn.visitor.CodePart;
+import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public abstract class Expression implements CodePart {
+public abstract class Expression implements SyntaxRule {
 
 	@Override
 	public void accept(Visitor v) {

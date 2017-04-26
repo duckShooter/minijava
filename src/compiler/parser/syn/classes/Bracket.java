@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
-import compiler.parser.syn.visitor.CodePart;
+import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public class Bracket implements CodePart {
+public class Bracket implements SyntaxRule {
 	public boolean isAvailable;
 	
 	public Bracket(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
