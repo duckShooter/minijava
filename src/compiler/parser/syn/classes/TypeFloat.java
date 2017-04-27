@@ -7,7 +7,6 @@ import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
 
 public class TypeFloat extends Type {
-	public Bracket bracket;
 	
 	public TypeFloat(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
 		leximesIndex.increment();

@@ -9,8 +9,9 @@ import compiler.parser.syn.SyntaxEngine;
 import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 public class ExpressionRest implements SyntaxRule {
-	Expression expression;
-	DotRest dotRest;
+	public Expression expression;
+	public DotRest dotRest;
+	public String op; //Terminal
 
 	ExpressionRest(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
 		if (leximes.get(leximesIndex.getValue()).value.equals("&&")
@@ -19,6 +20,7 @@ public class ExpressionRest implements SyntaxRule {
 				|| leximes.get(leximesIndex.getValue()).value.equals("-")
 				|| leximes.get(leximesIndex.getValue()).value.equals("*")) {
 			leximesIndex.increment();
+			op = leximes.get(leximesIndex.getValue()).value; //Save the type of operation (for printing later)
 			// abdo's part aka expression class
 			expression = new Expression(leximes, leximesIndex);
 

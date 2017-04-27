@@ -7,7 +7,6 @@ import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
 
 public class TypeString extends Type {
-	public Bracket bracket;
 
 	public TypeString(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
 		leximesIndex.increment();

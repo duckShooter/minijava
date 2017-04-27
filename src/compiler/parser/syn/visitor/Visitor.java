@@ -9,7 +9,6 @@ public interface Visitor {
 	public void visit(VarDeclaration varDeclaration);
 	public void visit(MethodDeclaration methodDeclaration);
 	public void visit(Type type);
-	public void visit(Bracket bracket);
 	public void visit(Identifier identifier);
 	public void visit(Statement statement);
 	public void visit(Expression expression);

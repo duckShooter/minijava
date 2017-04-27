@@ -10,9 +10,12 @@ import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
 public abstract class Type implements SyntaxRule {
+	public Bracket bracket;
+	
 	public void accept(Visitor v){
 		v.visit(this);
 	}
+	
 	public static Type getType(ArrayList<Lexime> leximes, MutableInt leximesIndex){
 		Type type = null;
 		if(leximes.get(leximesIndex.getValue()).value.equals("int"))

@@ -8,7 +8,7 @@ import compiler.parser.syn.MutableInt;
 import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public class Bracket implements SyntaxRule {
+public class Bracket {
 	public boolean isAvailable;
 	
 	public Bracket(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
@@ -18,10 +18,5 @@ public class Bracket implements SyntaxRule {
 			isAvailable = true;
 		} else
 			isAvailable = false;
-	}
-
-	@Override
-	public void accept(Visitor v) {
-		v.visit(this);
 	}
 }
