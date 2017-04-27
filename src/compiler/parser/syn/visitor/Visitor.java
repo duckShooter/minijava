@@ -13,4 +13,10 @@ public interface Visitor {
 	public void visit(Identifier identifier);
 	public void visit(Statement statement);
 	public void visit(Expression expression);
+	public void visit(ExpressionBar expressionBar);
+	public void visit(ExpressionRest expressionRest);
+	public void visit(DotRest dotRest);
+	public void visit(ExpressionRestNew expressionRestNew);
+
+
 }
