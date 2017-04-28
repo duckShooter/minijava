@@ -8,7 +8,7 @@ import compiler.parser.syn.MutableInt;
 import compiler.parser.syn.SyntaxEngine;
 import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
-public class ExpressionRestNew implements SyntaxRule {
+public  class ExpressionRestNew implements SyntaxRule {
 	Expression expression;
 	Identifier identifier;
 
