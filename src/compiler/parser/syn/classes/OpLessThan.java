@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import compiler.analyzer.lex.Lexime;
 import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
-public class TypeLessThan extends ExpressionRest{
-public TypeLessThan(ArrayList<Lexime> leximes, MutableInt leximesIndex){
+public class OpLessThan extends ExpressionRest{
+public OpLessThan(ArrayList<Lexime> leximes, MutableInt leximesIndex){
 	op = leximes.get(leximesIndex.getValue()).value;
 	leximesIndex.increment();
 	expression = new Expression(leximes, leximesIndex);

@@ -18,19 +18,19 @@ public abstract class ExpressionRest implements SyntaxRule {
 		ExpressionRest expressionRest =null;
 		
 		if (leximes.get(leximesIndex.getValue()).value.equals("&&"))
-			expressionRest =new TypeAnd(leximes, leximesIndex);
+			expressionRest =new OpAnd(leximes, leximesIndex);
 		else if(leximes.get(leximesIndex.getValue()).value.equals("<"))
-			expressionRest =new TypeLessThan(leximes, leximesIndex);
+			expressionRest =new OpLessThan(leximes, leximesIndex);
 		else if( leximes.get(leximesIndex.getValue()).value.equals("+"))
-			expressionRest =new TypePlus(leximes, leximesIndex);
+			expressionRest =new OpPlus(leximes, leximesIndex);
 		else if(leximes.get(leximesIndex.getValue()).value.equals("-"))
-			expressionRest =new TypeMinus(leximes, leximesIndex);
+			expressionRest =new OpMinus(leximes, leximesIndex);
 		else if(leximes.get(leximesIndex.getValue()).value.equals("*"))
-			expressionRest =new TypeMultiply(leximes, leximesIndex);
+			expressionRest =new OpMultiply(leximes, leximesIndex);
 		else if(leximes.get(leximesIndex.getValue()).value.equals("["))
-			expressionRest =new  TypeOpeningBracket(leximes, leximesIndex);
+			expressionRest =new  OpOpeningBracket(leximes, leximesIndex);
 		else if(leximes.get(leximesIndex.getValue()).value.equals("."))
-			expressionRest =new TypeDot(leximes, leximesIndex);
+			expressionRest =new OpDot(leximes, leximesIndex);
 		else
 			SyntaxEngine.error(leximesIndex);
 		return expressionRest;

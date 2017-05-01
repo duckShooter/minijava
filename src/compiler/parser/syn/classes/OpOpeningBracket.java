@@ -7,8 +7,8 @@ import compiler.analyzer.lex.Token;
 import compiler.parser.syn.MutableInt;
 import compiler.parser.syn.SyntaxEngine;
 
-public class TypeOpeningBracket extends ExpressionRest {
-	public TypeOpeningBracket(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
+public class OpOpeningBracket extends ExpressionRest {
+	public OpOpeningBracket(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
 		op = leximes.get(leximesIndex.getValue()).value;
 		leximesIndex.increment();
 		expression = new Expression(leximes, leximesIndex);
