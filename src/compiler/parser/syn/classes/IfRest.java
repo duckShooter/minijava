@@ -9,14 +9,13 @@ import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
 public class IfRest implements SyntaxRule {
-
-	Statement stmt;
+	public Statement stmt;
+	
 	public IfRest (ArrayList<Lexime> leximes, MutableInt leximesIndex) {
 		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("else"))
 			SyntaxEngine.error(leximesIndex);
-		// stmt = new Statement(leximes,leximesIndex);
-		
-		
+		stmt = Statement.getStatementType(leximes, leximesIndex);
+
 	}
 	
 	@Override
