@@ -11,7 +11,7 @@ public class ExpressionBar implements SyntaxRule {
 	public ExpressionRest expressionRest;
 
 	ExpressionBar(ArrayList<Lexime> leximes, MutableInt leximesIndex) {
-		expressionRest = ExpressionRest.getType(leximes, leximesIndex); //FIX
+		expressionRest = new ExpressionRest(leximes, leximesIndex);
 		
 		switch(leximes.get(leximesIndex.getValue()).value){
 		case "&&":

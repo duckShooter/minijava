@@ -7,7 +7,7 @@ import compiler.parser.syn.SyntaxEngine;
 import compiler.parser.syn.visitor.SyntaxRule;
 import compiler.parser.syn.visitor.Visitor;
 
-public abstract class ExpressionRest implements SyntaxRule {
+public class ExpressionRest implements SyntaxRule {
 	public Expression expression;
 	public DotRest dotRest;
 	public String op; //Terminal
@@ -18,13 +18,12 @@ public abstract class ExpressionRest implements SyntaxRule {
 				|| leximes.get(leximesIndex.getValue()).value.equals("+")
 				|| leximes.get(leximesIndex.getValue()).value.equals("-")
 				|| leximes.get(leximesIndex.getValue()).value.equals("*")) {
-			leximesIndex.increment();
-			op = leximes.get(leximesIndex.getValue()).value; //Save the type of operation (for printing later)
-			expression = new Expression(leximes, leximesIndex); //FIX
+			op = leximes.get(leximesIndex.getAndIncrement()).value; //Save the type of operation (for printing later)
+			expression = Expression.getExpression(leximes, leximesIndex);
 
 		} else if (leximes.get(leximesIndex.getValue()).value.equals("[")) {
 			leximesIndex.increment();
-			expression = new Expression(leximes, leximesIndex); //FIX
+			expression = Expression.getExpression(leximes, leximesIndex);
 			if (leximes.get(leximesIndex.getValue()).value.equals("]"))
 				leximesIndex.increment();				
 			else
