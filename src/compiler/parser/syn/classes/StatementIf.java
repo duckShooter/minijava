@@ -24,6 +24,10 @@ public class StatementIf extends Statement {
 			SyntaxEngine.error(leximesIndex);
 
 		statement = Statement.getStatementType(leximes, leximesIndex);
-
+		
+		if(leximes.get(leximesIndex.getValue()).value.equals("else"))
+			ifRest = new IfRest(leximes, leximesIndex);
+		else
+			ifRest = null;
 	}
 }

@@ -45,7 +45,7 @@ public class MainClass implements SyntaxRule {
 		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("{"))
 			SyntaxEngine.error(leximesIndex);
 		
-		//statement = new Statement(); // this is just interface, need to implement the children
+		statement = Statement.getStatementType(leximes, leximesIndex); 
 		
 		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("}"))
 			SyntaxEngine.error(leximesIndex);

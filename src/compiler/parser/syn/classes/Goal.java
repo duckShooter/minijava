@@ -13,10 +13,12 @@ public class Goal implements SyntaxRule {
 	public ArrayList<ClassDeclaration> classDeclarations;
 	
 	public Goal(ArrayList<Lexime> leximes) {
+		leximesIndex = new MutableInt(0);
+		
 		mainClass = new MainClass(leximes, leximesIndex);
 		
 		classDeclarations = new ArrayList<>();
-		while(leximesIndex.getValue() <= leximes.size()){
+		while(leximesIndex.getValue() < leximes.size()){
 			classDeclarations.add(new ClassDeclaration(leximes, leximesIndex));
 		}
 	}

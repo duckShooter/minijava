@@ -1,34 +1,88 @@
 <CLASS>: class
-<ID>: myclass
+<ID>: Factorial
 <LEFT_CURLY_B>: {
 <EOL>: 
-<?COMMENT2>: /* my ultimate comment */
-<EOL>: 
-<INT>: int
-<ID>: var
-<RIGHT_ROUND_B>: )
-<RIGHT_ROUND_B>: )
-<ID>: XX1
-<EQUAL>: =
-<INTEGRAL_LITERAL>: 0
-<SEMICOLON>: ;
-<COMMENT_R>: */
-<EOL>: 
-<INT>: int
-<ERROR>: 3CC1
-<RIGHT_ROUND_B>: )
-<EQUAL>: =
-<INTEGRAL_LITERAL>: 0
-<SEMICOLON>: ;
-<COMMENT_R>: */
-<EOL>: 
-<INTEGRAL_LITERAL>: 10
-<PLUS>: +
+<PUBLIC>: public
+<STATIC>: static
+<VOID>: void
+<MAIN>: main
 <LEFT_ROUND_B>: (
-<MINUS>: -
-<INTEGRAL_LITERAL>: 5
+<STRING>: String
+<LEFT_SQUARE_B>: [
+<RIGHT_SQUARE_B>: ]
+<ID>: a
+<RIGHT_ROUND_B>: )
+<LEFT_CURLY_B>: {
+<EOL>: 
+<SYSTEM.OUT.PRINTLN>: System.out.println
+<LEFT_ROUND_B>: (
+<NEW>: new
+<ID>: Fac
+<LEFT_ROUND_B>: (
+<RIGHT_ROUND_B>: )
+<ERROR>: .
+<ID>: ComputeFac
+<LEFT_ROUND_B>: (
+<INTEGRAL_LITERAL>: 10
+<RIGHT_ROUND_B>: )
 <RIGHT_ROUND_B>: )
 <SEMICOLON>: ;
 <EOL>: 
 <RIGHT_CURLY_B>: }
+<EOL>: 
+<RIGHT_CURLY_B>: }
+<EOL>: 
+<CLASS>: class
+<ID>: Fac
+<LEFT_CURLY_B>: {
+<EOL>: 
+<PUBLIC>: public
+<INT>: int
+<ID>: ComputeFac
+<LEFT_ROUND_B>: (
+<INT>: int
+<ID>: num
+<RIGHT_ROUND_B>: )
+<LEFT_CURLY_B>: {
+<EOL>: 
+<INT>: int
+<ID>: num_aux
 <SEMICOLON>: ;
+<EOL>: 
+<IF>: if
+<LEFT_ROUND_B>: (
+<ID>: num
+<LESSTHAN>: <
+<INTEGRAL_LITERAL>: 1
+<RIGHT_ROUND_B>: )
+<EOL>: 
+<ID>: num_aux
+<EQUAL>: =
+<INTEGRAL_LITERAL>: 1
+<SEMICOLON>: ;
+<EOL>: 
+<ELSE>: else
+<EOL>: 
+<ID>: num_aux
+<EQUAL>: =
+<ID>: num
+<MULTIPLY>: *
+<LEFT_ROUND_B>: (
+<THIS>: this
+<DOT>: .
+<ID>: ComputeFac
+<LEFT_ROUND_B>: (
+<ID>: num
+<MINUS>: -
+<INTEGRAL_LITERAL>: 1
+<RIGHT_ROUND_B>: )
+<RIGHT_ROUND_B>: )
+<SEMICOLON>: ;
+<EOL>: 
+<RETURN>: return
+<ID>: num_aux
+<SEMICOLON>: ;
+<EOL>: 
+<RIGHT_CURLY_B>: }
+<EOL>: 
+<RIGHT_CURLY_B>: }

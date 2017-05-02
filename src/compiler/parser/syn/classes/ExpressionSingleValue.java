@@ -23,11 +23,15 @@ public class ExpressionSingleValue extends Expression {
 			value = Value.TRUE;
 		else if(leximes.get(leximesIndex.getValue()).type.equals(TokenName.FALSE))
 			value = Value.FALSE;
-		else if(leximes.get(leximesIndex.getValue()).type.equals(TokenName.INTEGRAL_LITERAL))
+		else if(leximes.get(leximesIndex.getValue()).type.equals(TokenName.INTEGRAL_LITERAL)){
+			value = Value.INTERGRAL_VALUE;
 			intValue = leximes.get(leximesIndex.getValue()).value;
-		else if(leximes.get(leximesIndex.getValue()).type.equals(TokenName.ID))
+		}
+		else if(leximes.get(leximesIndex.getValue()).type.equals(TokenName.ID)){
+			value = Value.IDENTIFIER;
 			identifier = new Identifier(leximes, leximesIndex);
-		else
+		
+		}else
 			SyntaxEngine.error(leximesIndex); //useless as it's already checked, but keep it anyway
 		
 		//only increment in case of not identifier, as the identifier constructor will handle it

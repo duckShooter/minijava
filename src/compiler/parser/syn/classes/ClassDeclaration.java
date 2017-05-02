@@ -29,13 +29,16 @@ public class ClassDeclaration implements SyntaxRule {
 			SyntaxEngine.error(leximesIndex);
 			
 		varDeclarations = new ArrayList<>();
-		while(!leximes.get(leximesIndex.getValue()).value.equals("public") && !leximes.get(leximesIndex.getValue()).equals("private") && 
+		while(!leximes.get(leximesIndex.getValue()).value.equals("public") && !leximes.get(leximesIndex.getValue()).value.equals("private") && 
 				!leximes.get(leximesIndex.getValue()).value.equals("}"))
 			varDeclarations.add(new VarDeclaration(leximes, leximesIndex));
 		
 		methodDeclarations = new ArrayList<>();
 		while(!leximes.get(leximesIndex.getValue()).value.equals("}"))
 			methodDeclarations.add(new MethodDeclaration(leximes, leximesIndex));
+		
+		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("}"))
+			SyntaxEngine.error(leximesIndex);
 	}
 
 	@Override

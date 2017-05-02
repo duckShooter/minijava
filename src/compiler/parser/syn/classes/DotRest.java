@@ -19,8 +19,10 @@ public class DotRest implements SyntaxRule {
 			lengthVariable = true;
 			return;
 		} else {
-			if (leximes.get(leximesIndex.getValue()).type.equals(TokenName.ID))
-				identifier = new Identifier(leximes, leximesIndex);
+			if (!leximes.get(leximesIndex.getValue()).type.equals(TokenName.ID))
+				SyntaxEngine.error(leximesIndex);
+			
+			identifier = new Identifier(leximes, leximesIndex);
 
 			if (!leximes.get(leximesIndex.getAndIncrement()).value.equals("("))
 				SyntaxEngine.error(leximesIndex);

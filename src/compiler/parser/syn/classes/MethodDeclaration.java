@@ -64,14 +64,15 @@ public class MethodDeclaration implements SyntaxRule {
 			nextValue = leximes.get(leximesIndex.getValue()).value;
 		}
 		
+		statements = new ArrayList<>();
 		while(!leximes.get(leximesIndex.getValue()).value.equals("return")){
-			//get the statement type
+			statements.add(Statement.getStatementType(leximes, leximesIndex));
 		}
 		
 		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals("return"))
 			SyntaxEngine.error(leximesIndex);
 		
-		//expression, should be an interface
+		returnExpression = Expression.getExpression(leximes, leximesIndex);
 		
 		if(!leximes.get(leximesIndex.getAndIncrement()).value.equals(";"))
 			SyntaxEngine.error(leximesIndex);
