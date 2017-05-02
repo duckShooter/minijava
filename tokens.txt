@@ -1,5 +1,5 @@
 <CLASS>: class
-<ID>: Factorial
+<ID>: test
 <LEFT_CURLY_B>: {
 <EOL>: 
 <PUBLIC>: public
@@ -10,21 +10,19 @@
 <STRING>: String
 <LEFT_SQUARE_B>: [
 <RIGHT_SQUARE_B>: ]
-<ID>: a
+<ID>: args
 <RIGHT_ROUND_B>: )
 <LEFT_CURLY_B>: {
 <EOL>: 
+<WHILE>: while
+<LEFT_ROUND_B>: (
+<TRUE>: true
+<RIGHT_ROUND_B>: )
+<EOL>: 
 <SYSTEM.OUT.PRINTLN>: System.out.println
-<LEFT_ROUND_B>: (
-<NEW>: new
-<ID>: Fac
-<LEFT_ROUND_B>: (
-<RIGHT_ROUND_B>: )
-<ERROR>: .
-<ID>: ComputeFac
-<LEFT_ROUND_B>: (
-<INTEGRAL_LITERAL>: 10
-<RIGHT_ROUND_B>: )
+<ERROR>: (
+<NOT>: !
+<FALSE>: false
 <RIGHT_ROUND_B>: )
 <SEMICOLON>: ;
 <EOL>: 
@@ -32,55 +30,52 @@
 <EOL>: 
 <RIGHT_CURLY_B>: }
 <EOL>: 
+<EOL>: 
 <CLASS>: class
-<ID>: Fac
+<ID>: test2
+<EXTENDS>: extends
+<ID>: test
 <LEFT_CURLY_B>: {
+<EOL>: 
+<INT>: int
+<LEFT_SQUARE_B>: [
+<RIGHT_SQUARE_B>: ]
+<ID>: aab
+<SEMICOLON>: ;
+<EOL>: 
+<FLOAT>: float
+<ID>: x
+<SEMICOLON>: ;
+<EOL>: 
 <EOL>: 
 <PUBLIC>: public
 <INT>: int
-<ID>: ComputeFac
+<ID>: getIt
 <LEFT_ROUND_B>: (
 <INT>: int
-<ID>: num
+<ID>: a
+<COMMA>: ,
+<FLOAT>: float
+<ID>: b
 <RIGHT_ROUND_B>: )
 <LEFT_CURLY_B>: {
 <EOL>: 
 <INT>: int
-<ID>: num_aux
+<ID>: z
 <SEMICOLON>: ;
 <EOL>: 
-<IF>: if
-<LEFT_ROUND_B>: (
-<ID>: num
-<LESSTHAN>: <
-<INTEGRAL_LITERAL>: 1
-<RIGHT_ROUND_B>: )
 <EOL>: 
-<ID>: num_aux
+<ID>: mine
 <EQUAL>: =
-<INTEGRAL_LITERAL>: 1
-<SEMICOLON>: ;
-<EOL>: 
-<ELSE>: else
-<EOL>: 
-<ID>: num_aux
-<EQUAL>: =
-<ID>: num
-<MULTIPLY>: *
+<NEW>: new
+<ID>: test
 <LEFT_ROUND_B>: (
-<THIS>: this
-<DOT>: .
-<ID>: ComputeFac
-<LEFT_ROUND_B>: (
-<ID>: num
-<MINUS>: -
-<INTEGRAL_LITERAL>: 1
-<RIGHT_ROUND_B>: )
 <RIGHT_ROUND_B>: )
 <SEMICOLON>: ;
+<EOL>: 
 <EOL>: 
 <RETURN>: return
-<ID>: num_aux
+<THIS>: this
 <SEMICOLON>: ;
 <EOL>: 
 <RIGHT_CURLY_B>: }

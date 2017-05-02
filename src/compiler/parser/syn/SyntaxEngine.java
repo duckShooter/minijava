@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import compiler.analyzer.lex.Lexime;
-import compiler.analyzer.lex.Token;
 import compiler.parser.syn.classes.Goal;
 
 public class SyntaxEngine {
@@ -20,8 +19,7 @@ public class SyntaxEngine {
 		//todo now deal with it Gio :D
 		System.out.println(goal);
 	}
-	private static void analyzeSyntax(){ //useless	
-	}
+	
 	public static ArrayList<Lexime> readTokens(String fileName) {
 		ArrayList<Lexime> leximes = null;
 		try {
