@@ -42,7 +42,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 	
 	@Override
 	public void visit(Goal goal) {
-		root = new DefaultMutableTreeNode(Goal.class.getName());
+		root = new DefaultMutableTreeNode(Goal.class.getSimpleName());
 		recentNode = root;
 		goal.mainClass.accept(this);
 		for(ClassDeclaration d : goal.classDeclarations)
@@ -51,7 +51,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(MainClass mainClass) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(MainClass.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(MainClass.class.getSimpleName());
 		recentNode.add(node); //Add to previous node
 		recentNode = node; //Update last node
 		
@@ -77,12 +77,13 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		out.println(") {"); //Main method block opening
 		
 		tabber.tabOneMore();
+		out.print(tabber.tab);
 		mainClass.statement.accept(this);
 		tabber.tabOneLess();
 		
 		node.add(new DefaultMutableTreeNode("}"));
 		node.add(new DefaultMutableTreeNode("}"));
-		out.println(tabber.tab + "}"); //Main method block closing
+		out.println("\n" + tabber.tab + "}"); //Main method block closing
 		out.println("}"); //Main class block closing
 		
 		recentNode = (DefaultMutableTreeNode)node.getParent(); //Backtrack to daddy
@@ -90,7 +91,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(ClassDeclaration classDeclaration) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ClassDeclaration.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ClassDeclaration.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -124,7 +125,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(VarDeclaration varDeclaration) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(VarDeclaration.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(VarDeclaration.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -139,7 +140,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(MethodDeclaration methodDeclaration) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(MethodDeclaration.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(MethodDeclaration.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -154,15 +155,17 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		out.print("(");
 		if(methodDeclaration.methodArgs != null && !methodDeclaration.methodArgs.isEmpty()) {
 			methodDeclaration.methodArgs.get(0).getKey().accept(this); //Type
+			out.print(" ");
 			methodDeclaration.methodArgs.get(0).getValue().accept(this); //Identifier
 			for(int i=1; i<methodDeclaration.methodArgs.size(); i++) { //Escape first argument
 				node.add(new DefaultMutableTreeNode(",")); 
 				out.print(", ");
 				methodDeclaration.methodArgs.get(i).getKey().accept(this);
+				out.print(" ");
 				methodDeclaration.methodArgs.get(i).getValue().accept(this);
 			}
 		}
-		out.print(") {"); //Method block opening
+		out.println(") {"); //Method block opening
 		
 		tabber.tabOneMore();
 		if(methodDeclaration.variables != null) { //Unnecessary check
@@ -181,18 +184,19 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 			}
 		}
 		
-		out.print(tabber.tab + "return");
+		node.add(new DefaultMutableTreeNode("return"));
+		out.print(tabber.tab + "return ");
 		methodDeclaration.returnExpression.accept(this);
 		tabber.tabOneLess();
 		node.add(new DefaultMutableTreeNode("}"));
-		out.println("\n}"); //Method block closing
+		out.println("\n" + tabber.tab + "}"); //Method block closing
 		
 		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 
 	@Override
 	public void visit(Type type) { //I thought visitor DP was supposed to eliminate the 'instanceof' check!
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Type.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Type.class.getSimpleName());
 		recentNode.add(node);
 		//No need to refer to this node as a recent node since we only have terminals here (no more children to visit)
 		
@@ -218,7 +222,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(Identifier identifier) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Identifier.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Identifier.class.getSimpleName());
 		recentNode.add(node); 
 		node.add(new DefaultMutableTreeNode(identifier.identifier));
 		out.print(identifier.identifier);
@@ -227,7 +231,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(Statement statement) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Statement.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Statement.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -250,11 +254,10 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 			out.print("if (");
 			((StatementIf) statement).expression.accept(this);
 			node.add(new DefaultMutableTreeNode(")"));
-			out.print(") ");
+			out.println(") ");
 			((StatementIf) statement).statement.accept(this);
 			if(((StatementIf) statement).ifRest != null)
 				((StatementIf) statement).ifRest.accept(this);
-			
 		} else if(statement instanceof StatementWhile) {
 			node.add(new DefaultMutableTreeNode("while"));
 			node.add(new DefaultMutableTreeNode("("));
@@ -282,7 +285,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(Expression expression) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Expression.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Expression.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -309,10 +312,12 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 				node.add(new DefaultMutableTreeNode("new"));
 				out.print("new ");
 				((ExpressionComplexValue) expression).expressionRestNew.accept(this);
+				break;
 			case NOT:
 				node.add(new DefaultMutableTreeNode("!"));
 				out.print("!");
 				((ExpressionComplexValue) expression).expression.accept(this);
+				break;
 			case BRACKETS:
 				node.add(new DefaultMutableTreeNode("("));
 				out.print("(");
@@ -330,7 +335,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(ExpressionBar expressionBar) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionBar.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionBar.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -343,7 +348,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(ExpressionRest expressionRest) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionRest.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionRest.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -368,7 +373,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(DotRest dotRest) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(DotRest.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(DotRest.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -396,7 +401,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 	
 	@Override
 	public void visit(IfRest ifRest) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(IfRest.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(IfRest.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		node.add(new DefaultMutableTreeNode("else"));
@@ -407,7 +412,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 	
 	@Override
 	public void visit(StatementRest statementRest) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(StatementRest.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(StatementRest.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -434,7 +439,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(ExpressionRestNew expressionRestNew) {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionRestNew.class.getName());
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionRestNew.class.getSimpleName());
 		recentNode.add(node);
 		recentNode = node;
 		
@@ -470,5 +475,4 @@ class TabTracker { //Yes, It's true what your eyes see! this is a class for tabs
 	public void tabOneMore() {
 		tab += "\t";
 	}
-	
 }
