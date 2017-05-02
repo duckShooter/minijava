@@ -10,6 +10,8 @@ import compiler.parser.syn.classes.ExpressionBar;
 import compiler.parser.syn.classes.ExpressionComplexValue;
 import compiler.parser.syn.classes.ExpressionRest;
 import compiler.parser.syn.classes.ExpressionRestNew;
+import compiler.parser.syn.classes.ExpressionRestNewIdentifier;
+import compiler.parser.syn.classes.ExpressionRestNewInt;
 import compiler.parser.syn.classes.ExpressionSingleValue;
 import compiler.parser.syn.classes.Goal;
 import compiler.parser.syn.classes.Identifier;
@@ -341,14 +343,55 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(ExpressionRest expressionRest) {
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionRest.class.getName());
+		recentNode.add(node);
+		recentNode = node;
 		
-		
+		if(expressionRest.op != null) {
+			node.add(new DefaultMutableTreeNode(expressionRest.op));
+			out.print(" " + expressionRest.op + " ");
+			expressionRest.expression.accept(this);	
+			
+		} else if(expressionRest.dotRest != null) {
+			node.add(new DefaultMutableTreeNode("."));
+			out.print(".");
+			expressionRest.dotRest.accept(this);
+		} else {
+			node.add(new DefaultMutableTreeNode("["));
+			out.print("[");
+			expressionRest.expression.accept(this);
+			node.add(new DefaultMutableTreeNode("]"));
+			out.print("]");
+		}
+		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 
 	@Override
 	public void visit(DotRest dotRest) {
-		// TODO Auto-generated method stub
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(DotRest.class.getName());
+		recentNode.add(node);
+		recentNode = node;
 		
+		if(dotRest.lengthVariable) {
+			node.add(new DefaultMutableTreeNode("length"));
+			out.print("length");
+		}
+		else {
+			dotRest.identifier.accept(this);
+			if(dotRest.expressions != null && !dotRest.expressions.isEmpty()) {
+				node.add(new DefaultMutableTreeNode("("));
+				out.print("(");
+				dotRest.expressions.get(0).accept(this);
+				for(Expression e : dotRest.expressions) {
+					node.add(new DefaultMutableTreeNode(","));
+					out.print(", ");
+					e.accept(this);
+				}
+				node.add(new DefaultMutableTreeNode(")"));
+				out.print(")");
+			}
+		}
+		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 	
 	@Override
@@ -391,8 +434,24 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(ExpressionRestNew expressionRestNew) {
-		// TODO Auto-generated method stub
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionRestNew.class.getName());
+		recentNode.add(node);
+		recentNode = node;
 		
+		if(expressionRestNew instanceof ExpressionRestNewInt) {
+			node.add(new DefaultMutableTreeNode("int"));
+			node.add(new DefaultMutableTreeNode("["));
+			out.print("int [");
+			((ExpressionRestNewInt) expressionRestNew).expression.accept(this);
+			node.add(new DefaultMutableTreeNode("]"));
+			out.print("]");
+		} else {
+			((ExpressionRestNewIdentifier) expressionRestNew).identifier.accept(this);
+			node.add(new DefaultMutableTreeNode("("));
+			node.add(new DefaultMutableTreeNode(")"));
+			out.print("()");
+		}
+		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 	
 	public JTree createVisualParseTree() {
