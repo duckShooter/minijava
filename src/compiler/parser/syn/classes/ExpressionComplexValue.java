@@ -8,7 +8,7 @@ import compiler.parser.syn.SyntaxEngine;
 import compiler.parser.syn.TokenName;
 
 public class ExpressionComplexValue extends Expression {
-	private enum Value {
+	public enum Value {
 		NEW, NOT, BRACKETS
 	}
 

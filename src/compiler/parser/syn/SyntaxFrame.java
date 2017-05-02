@@ -25,6 +25,7 @@ public class SyntaxFrame extends JFrame {
 			
 			@Override
 			public void run() {
+				
 				PrettyPrintVisitor ppv = new PrettyPrintVisitor();
 				
 				// User you syntax engine to do some shit here and there to get things parsed

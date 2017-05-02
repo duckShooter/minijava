@@ -23,7 +23,6 @@ public abstract class Expression implements SyntaxRule {
 			expression = new ExpressionComplexValue(leximes, leximesIndex);
 		else
 			SyntaxEngine.error(leximesIndex);
-
 		return expression;
 	}
 

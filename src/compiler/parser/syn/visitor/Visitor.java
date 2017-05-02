@@ -15,6 +15,8 @@ public interface Visitor {
 	public void visit(ExpressionBar expressionBar);
 	public void visit(ExpressionRest expressionRest);
 	public void visit(DotRest dotRest);
+	public void visit(IfRest ifRest);
+	public void visit(StatementRest statementRest);
 	public void visit(ExpressionRestNew expressionRestNew);
 
 

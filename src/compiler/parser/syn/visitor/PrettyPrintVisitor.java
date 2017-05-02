@@ -1,30 +1,35 @@
 package compiler.parser.syn.visitor;
 
-import java.util.Enumeration;
-
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreeNode;
 
-import compiler.parser.syn.classes.Bracket;
 import compiler.parser.syn.classes.ClassDeclaration;
 import compiler.parser.syn.classes.DotRest;
 import compiler.parser.syn.classes.Expression;
 import compiler.parser.syn.classes.ExpressionBar;
+import compiler.parser.syn.classes.ExpressionComplexValue;
 import compiler.parser.syn.classes.ExpressionRest;
 import compiler.parser.syn.classes.ExpressionRestNew;
+import compiler.parser.syn.classes.ExpressionSingleValue;
 import compiler.parser.syn.classes.Goal;
 import compiler.parser.syn.classes.Identifier;
+import compiler.parser.syn.classes.IfRest;
 import compiler.parser.syn.classes.MainClass;
 import compiler.parser.syn.classes.MethodDeclaration;
 import compiler.parser.syn.classes.Statement;
+import compiler.parser.syn.classes.StatementBrackets;
+import compiler.parser.syn.classes.StatementIdentifier;
+import compiler.parser.syn.classes.StatementIf;
+import compiler.parser.syn.classes.StatementPrint;
+import compiler.parser.syn.classes.StatementRest;
+import compiler.parser.syn.classes.StatementRestBracket;
+import compiler.parser.syn.classes.StatementRestEqual;
+import compiler.parser.syn.classes.StatementWhile;
 import compiler.parser.syn.classes.Type;
 import compiler.parser.syn.classes.TypeBoolean;
 import compiler.parser.syn.classes.TypeChar;
 import compiler.parser.syn.classes.TypeFloat;
 import compiler.parser.syn.classes.TypeInt;
-import compiler.parser.syn.classes.TypeString;
 import compiler.parser.syn.classes.VarDeclaration;
 import static java.lang.System.out;
 
@@ -220,26 +225,123 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 
 	@Override
 	public void visit(Statement statement) {
-		// TODO Auto-generated method stub
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Statement.class.getName());
+		recentNode.add(node);
+		recentNode = node;
 		
+		if(statement instanceof StatementBrackets) {
+			node.add(new DefaultMutableTreeNode("{"));
+			out.print("{\n");
+			tabber.tabOneMore();
+			for(Statement  s : ((StatementBrackets) statement).statements) {
+				out.print(tabber.tab);
+				s.accept(this);
+				out.println();
+			}
+			tabber.tabOneLess();
+			node.add(new DefaultMutableTreeNode("}"));
+			out.println("}");
+			
+		} else if(statement instanceof StatementIf) {
+			node.add(new DefaultMutableTreeNode("if"));
+			node.add(new DefaultMutableTreeNode("("));
+			out.print("if (");
+			((StatementIf) statement).expression.accept(this);
+			node.add(new DefaultMutableTreeNode(")"));
+			out.print(") ");
+			((StatementIf) statement).statement.accept(this);
+			if(((StatementIf) statement).ifRest != null)
+				((StatementIf) statement).ifRest.accept(this);
+			
+		} else if(statement instanceof StatementWhile) {
+			node.add(new DefaultMutableTreeNode("while"));
+			node.add(new DefaultMutableTreeNode("("));
+			out.print("while (");
+			((StatementWhile) statement).expression.accept(this);
+			node.add(new DefaultMutableTreeNode(")"));
+			out.print(") ");
+			((StatementWhile) statement).statement.accept(this);
+			
+		} else if(statement instanceof StatementPrint) {
+			node.add(new DefaultMutableTreeNode("System.out.println"));
+			node.add(new DefaultMutableTreeNode("("));
+			out.print("System.out.println(");
+			((StatementPrint) statement).expression.accept(this);
+			node.add(new DefaultMutableTreeNode(")"));
+			node.add(new DefaultMutableTreeNode(";"));
+			out.print(");");
+		} else {
+			((StatementIdentifier) statement).identifier.accept(this);
+			((StatementIdentifier) statement).statementRest.accept(this);
+		}
+		
+		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 
 	@Override
 	public void visit(Expression expression) {
-		// TODO Auto-generated method stub
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(Expression.class.getName());
+		recentNode.add(node);
+		recentNode = node;
 		
+		if(expression instanceof ExpressionSingleValue) {
+			if(((ExpressionSingleValue) expression).value != null) {
+				node.add(new DefaultMutableTreeNode(((ExpressionSingleValue) expression).value.toString().toLowerCase()));
+				out.print(((ExpressionSingleValue) expression).value.toString().toLowerCase());				
+			}
+			
+			else if(((ExpressionSingleValue) expression).intValue != null) {
+				node.add(new DefaultMutableTreeNode(((ExpressionSingleValue) expression).intValue));
+				out.print(((ExpressionSingleValue) expression).intValue);
+
+			} else if(((ExpressionSingleValue) expression).identifier != null)
+				((ExpressionSingleValue) expression).identifier.accept(this);
+			
+			if(((ExpressionSingleValue) expression).expressionBar != null)
+				((ExpressionSingleValue) expression).expressionBar.accept(this);
+			
+		} else if(expression instanceof ExpressionComplexValue) {
+			node.add(new DefaultMutableTreeNode(((ExpressionComplexValue) expression).value.toString().toLowerCase()));
+			switch(((ExpressionComplexValue) expression).value) {
+			case NEW:
+				node.add(new DefaultMutableTreeNode("new"));
+				out.print("new ");
+				((ExpressionComplexValue) expression).expressionRestNew.accept(this);
+			case NOT:
+				node.add(new DefaultMutableTreeNode("!"));
+				out.print("!");
+				((ExpressionComplexValue) expression).expression.accept(this);
+			case BRACKETS:
+				node.add(new DefaultMutableTreeNode("("));
+				out.print("(");
+				((ExpressionComplexValue) expression).expression.accept(this);
+				node.add(new DefaultMutableTreeNode(")"));
+				out.print(")");
+			}
+			
+			if(((ExpressionComplexValue) expression).expressionBar != null)
+				((ExpressionComplexValue) expression).expressionBar.accept(this);
+		}
+		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 	
 
 	@Override
 	public void visit(ExpressionBar expressionBar) {
-		// TODO Auto-generated method stub
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(ExpressionBar.class.getName());
+		recentNode.add(node);
+		recentNode = node;
 		
+		expressionBar.expressionRest.accept(this);
+		if(expressionBar.expressionBar != null)
+			expressionBar.expressionBar.accept(this);
+		
+		recentNode = (DefaultMutableTreeNode)node.getParent();
 	}
 
 	@Override
 	public void visit(ExpressionRest expressionRest) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -248,6 +350,44 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void visit(IfRest ifRest) {
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(IfRest.class.getName());
+		recentNode.add(node);
+		recentNode = node;
+		node.add(new DefaultMutableTreeNode("else"));
+		out.println("else ");
+		ifRest.stmt.accept(this);
+		recentNode = (DefaultMutableTreeNode)node.getParent();
+	};
+	
+	@Override
+	public void visit(StatementRest statementRest) {
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(StatementRest.class.getName());
+		recentNode.add(node);
+		recentNode = node;
+		
+		if(statementRest instanceof StatementRestEqual) {
+			node.add(new DefaultMutableTreeNode("="));
+			out.print(" = ");
+			((StatementRestEqual) statementRest).expression.accept(this);
+			node.add(new DefaultMutableTreeNode(";"));
+			out.print(";");
+		} else {
+			node.add(new DefaultMutableTreeNode("["));
+			out.print("[");
+			((StatementRestBracket) statementRest).firstExp.accept(this);
+			node.add(new DefaultMutableTreeNode("]"));
+			node.add(new DefaultMutableTreeNode("="));
+			out.print("] = ");
+			((StatementRestBracket) statementRest).secondExp.accept(this);
+			node.add(new DefaultMutableTreeNode(";"));
+			out.print(";");
+		}
+		
+		recentNode = (DefaultMutableTreeNode)node.getParent();
+	};
 
 	@Override
 	public void visit(ExpressionRestNew expressionRestNew) {
