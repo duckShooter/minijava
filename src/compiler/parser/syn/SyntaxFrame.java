@@ -31,7 +31,7 @@ public class SyntaxFrame extends JFrame {
 				// User you syntax engine to do some shit here and there to get things parsed
 				
 				//This goal object should have been parsed by the engine first
-				Goal entryPoint = new Goal(null); // printing should start with Goal object accepting the visitor
+				Goal entryPoint = new Goal(SyntaxEngine.readTokens("tokens.txt")); // printing should start with Goal object accepting the visitor
 				entryPoint.accept(ppv); //Print (and build visual parse tree)
 				new SyntaxFrame(ppv.createVisualParseTree()); //Show the visual tree
 			}

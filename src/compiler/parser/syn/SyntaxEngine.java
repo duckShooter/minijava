@@ -15,22 +15,22 @@ public class SyntaxEngine {
 	private static ArrayList<Lexime> leximes;
 	private static Goal goal;
 	public static void main(String[] args) {
-		readTokens("tokens.txt");
+		leximes = readTokens("tokens.txt");
 		goal = new Goal(leximes);
 		//todo now deal with it Gio :D
 		System.out.println(goal);
 	}
 	private static void analyzeSyntax(){ //useless	
 	}
-	private static void readTokens(String fileName) {
+	public static ArrayList<Lexime> readTokens(String fileName) {
+		ArrayList<Lexime> leximes = null;
 		try {
 			List<String> stringList = Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8);
-			leximes = new ArrayList<>();
 			String[] line;
 			String type;
-			
+			leximes = new ArrayList<>();;
 			for(String str : stringList) {
-				line = str.split(" ");
+				line = str.split(" ", 2);
 		//		System.out.println(line.length);
 				type = line[0].substring(1, line[0].length() - 2);
 		//		System.out.println(type);
@@ -41,7 +41,8 @@ public class SyntaxEngine {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Error reading the file.");
-		}		
+		}	
+		return leximes;
 	}
 	public static void error(MutableInt index){
 		System.err.println("Syntax error within token " + leximes.get(index.getValue() - 1).type + " with value "

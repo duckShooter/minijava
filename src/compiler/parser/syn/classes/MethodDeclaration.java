@@ -58,7 +58,7 @@ public class MethodDeclaration implements SyntaxRule {
 		
 		variables = new ArrayList<>();
 		String nextValue = leximes.get(leximesIndex.getValue()).value;
-		while(nextValue.equals("int") || nextValue.equals("float") || nextValue.equals("chat") || nextValue.equals("boolean") || 
+		while(nextValue.equals("int") || nextValue.equals("float") || nextValue.equals("char") || nextValue.equals("boolean") || 
 				nextValue.equals("double")){
 			variables.add(new VarDeclaration(leximes, leximesIndex));
 			nextValue = leximes.get(leximesIndex.getValue()).value;
