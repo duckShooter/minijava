@@ -35,9 +35,16 @@ import compiler.parser.syn.classes.TypeInt;
 import compiler.parser.syn.classes.VarDeclaration;
 import static java.lang.System.out;
 
+/**
+ * 
+ * @author Giovanni
+ * @version 2.1
+ *
+ */
+
 public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 	private TabTracker tabber = new TabTracker();
-	private DefaultMutableTreeNode root;
+	private DefaultMutableTreeNode root; //Seed
 	private DefaultMutableTreeNode recentNode; //Depth pointer
 	
 	@Override
@@ -144,8 +151,8 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		recentNode.add(node);
 		recentNode = node;
 		
-		node.add(new DefaultMutableTreeNode(methodDeclaration.visibility));
-		out.print(methodDeclaration.visibility + " ");
+		node.add(new DefaultMutableTreeNode(methodDeclaration.visibility.toString().toLowerCase()));
+		out.print(methodDeclaration.visibility.toString().toLowerCase() + " ");
 		
 		methodDeclaration.methodType.accept(this);
 		out.print(" ");
@@ -165,6 +172,8 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 				methodDeclaration.methodArgs.get(i).getValue().accept(this);
 			}
 		}
+		node.add(new DefaultMutableTreeNode(")"));
+		node.add(new DefaultMutableTreeNode("{")); 
 		out.println(") {"); //Method block opening
 		
 		tabber.tabOneMore();
@@ -239,7 +248,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		
 		if(statement instanceof StatementBrackets) {
 			node.add(new DefaultMutableTreeNode("{"));
-			out.print("{\n");
+			out.print("{\n"); //Statement block opening
 			tabber.tabOneMore();
 			for(Statement  s : ((StatementBrackets) statement).statements) {
 				out.print(tabber.tab);
@@ -248,7 +257,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 			}
 			tabber.tabOneLess();
 			node.add(new DefaultMutableTreeNode("}"));
-			out.println("}");
+			out.println("}"); //Statement block closing
 			
 		} else if(statement instanceof StatementIf) {
 			node.add(new DefaultMutableTreeNode("if"));
@@ -281,7 +290,7 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 			((StatementIdentifier) statement).identifier.accept(this);
 			((StatementIdentifier) statement).statementRest.accept(this);
 			node.add(new DefaultMutableTreeNode(";"));
-			out.print(");");
+			out.print(";");
 		}
 		
 		recentNode = (DefaultMutableTreeNode)node.getParent();
@@ -467,6 +476,8 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 	}
 }
 
+//============================================================
+//Don't bother! it's just a helper class it has no other purpose in life
 class TabTracker { //Yes, It's true what your eyes see! this is a class for tabs .. deal with it!
 	String tab = "\t";
 	

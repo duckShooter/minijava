@@ -52,6 +52,7 @@ public class LexicalEngine {
 		Matcher matcher = pat.matcher(syntax);
 		
 		//inner loop
+		@SuppressWarnings("unused")
 		Pattern tempPat;
 		Matcher tempMatcher;
 		int last = -1;
@@ -91,6 +92,7 @@ public class LexicalEngine {
 	}
 	
 	private static String readSyntax() {
+		@SuppressWarnings("unused")
 		File file = new File("main.mj");
 		try {
 			

@@ -10,7 +10,7 @@ import compiler.parser.syn.visitor.Visitor;
 import javafx.util.Pair;
 
 public class MethodDeclaration implements SyntaxRule {
-	private enum Visibility {
+	public enum Visibility {
 		PUBLIC, PRIVATE
 	}
 	public Type methodType;

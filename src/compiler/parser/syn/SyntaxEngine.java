@@ -40,7 +40,7 @@ public class SyntaxEngine {
 		return leximes;
 	}
 	
-	public static void error(MutableInt index){
+	public static void error(MutableInt index) {
 		System.err.println("Syntax error within token " + leximes.get(index.getValue() - 1).type + " with value "
 				+ leximes.get(index.getValue() - 1).value +  ", at index " + (index.getValue() - 1));
 		System.exit(1);
