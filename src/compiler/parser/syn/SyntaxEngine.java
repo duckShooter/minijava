@@ -16,7 +16,6 @@ public class SyntaxEngine {
 	public static void main(String[] args) {
 		leximes = readTokens("tokens.txt");
 		goal = new Goal(leximes);
-		//todo now deal with it Gio :D
 		System.out.println(goal);
 	}
 	
@@ -29,9 +28,7 @@ public class SyntaxEngine {
 			leximes = new ArrayList<>();;
 			for(String str : stringList) {
 				line = str.split(" ", 2);
-		//		System.out.println(line.length);
 				type = line[0].substring(1, line[0].length() - 2);
-		//		System.out.println(type);
 				if(!type.equals("?COMMENT2") && !type.equals("COMMENT2") && !type.equals("EOL") && !type.equals("COMMENT1"))
 					leximes.add(new Lexime(line[1], type));
 			}
@@ -42,6 +39,7 @@ public class SyntaxEngine {
 		}	
 		return leximes;
 	}
+	
 	public static void error(MutableInt index){
 		System.err.println("Syntax error within token " + leximes.get(index.getValue() - 1).type + " with value "
 				+ leximes.get(index.getValue() - 1).value +  ", at index " + (index.getValue() - 1));

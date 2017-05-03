@@ -187,6 +187,8 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		node.add(new DefaultMutableTreeNode("return"));
 		out.print(tabber.tab + "return ");
 		methodDeclaration.returnExpression.accept(this);
+		node.add(new DefaultMutableTreeNode(";"));
+		out.print(";");
 		tabber.tabOneLess();
 		node.add(new DefaultMutableTreeNode("}"));
 		out.println("\n" + tabber.tab + "}"); //Method block closing
@@ -278,6 +280,8 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 		} else {
 			((StatementIdentifier) statement).identifier.accept(this);
 			((StatementIdentifier) statement).statementRest.accept(this);
+			node.add(new DefaultMutableTreeNode(";"));
+			out.print(");");
 		}
 		
 		recentNode = (DefaultMutableTreeNode)node.getParent();
@@ -306,7 +310,6 @@ public class PrettyPrintVisitor implements Visitor { //Over 9000 method calls
 				((ExpressionSingleValue) expression).expressionBar.accept(this);
 			
 		} else if(expression instanceof ExpressionComplexValue) {
-			node.add(new DefaultMutableTreeNode(((ExpressionComplexValue) expression).value.toString().toLowerCase()));
 			switch(((ExpressionComplexValue) expression).value) {
 			case NEW:
 				node.add(new DefaultMutableTreeNode("new"));
